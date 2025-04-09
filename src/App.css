@@ -1,0 +1,90 @@
+/* Base Styles */
+.weather-app {
+  max-width: 100%;
+  padding: 2rem 1rem;
+  min-height: 100vh;
+  margin: 0 auto;
+  text-align: center;
+  font-family: "Poppins", Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+}
+
+/* Dark Mode */
+.weather-app.dark-mode {
+  background: #121212;
+  color: #ffffff;
+}
+
+.dark-mode .weather-display,
+.dark-mode .forecast-card {
+  background: #1e1e1e;
+  color: #ffffff;
+  border: 1px solid #333;
+}
+
+.dark-mode input,
+.dark-mode button {
+  background: #2d2d2d;
+  color: #ffffff;
+  border: 1px solid #444;
+}
+
+/* Light Mode */
+.weather-app.light-mode {
+  background: #f5f5f5;
+  color: #333333;
+}
+
+.light-mode .weather-display,
+.light-mode .forecast-card {
+  background: #ffffff;
+  color: #333333;
+  border: 1px solid #e0e0e0;
+}
+
+.light-mode input,
+.light-mode button {
+  background: #ffffff;
+  color: #333333;
+  border: 1px solid #ccc;
+}
+
+/* Forecast Styles */
+.forecast-container {
+  margin-top: 2rem;
+  width: 100%;
+}
+
+.forecast-cards {
+  display: flex;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+}
+
+.forecast-card {
+  scroll-snap-align: start;
+  min-width: 160px;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  flex: 0 0 auto;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+  cursor: pointer;
+  margin-left: 1rem;
+  padding: 0.5rem;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
