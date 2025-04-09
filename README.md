@@ -1,17 +1,86 @@
-<<<<<<< HEAD
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-=======
 # WeatherFocusApp
-Simple Weather Focusing Application built using React
->>>>>>> origin/main
+
+A responsive weather application with dark/light mode and 5-day forecast.
+
+![Weather App Screenshot](public/screenshot.png)
+
+## Features
+
+- **Current Weather Data**:
+
+  - Temperature (Fahrenheit)
+  - Weather conditions
+  - Humidity
+  - Wind speed
+  - Feels-like temperature
+
+- **5-Day Forecast**:
+
+  - Horizontal scrolling display
+  - Daily temperature highs
+  - Weather condition icons
+
+- **User Experience**:
+  - Dark/Light mode toggle
+  - Dynamic weather-based theming
+  - Responsive design for all devices
+  - Location search functionality
+
+## Technologies Used
+
+- React.js
+- Vite
+- Axios for API calls
+- OpenWeatherMap API
+- CSS3 with modern flexbox layout
+
+## Installation
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/Kennedy01-crypto/WeatherFocusApp.git
+```
+
+2. Install dependencies:
+
+```bash
+npm install
+```
+
+3. Create a `.env` file in the root directory with your OpenWeatherMap API key:
+
+```env
+VITE_WEATHER_API_KEY=your_api_key_here
+```
+
+4. Run the development server:
+
+```bash
+npm run dev
+```
+
+## Deployment
+
+The app is deployed using GitHub Pages:
+
+```bash
+npm run build && git add dist -f && git commit -m "Adding dist folder" && git subtree push --prefix dist origin gh-pages
+```
+
+## Live Demo
+
+Access the live version at:  
+https://kennedy01-crypto.github.io/WeatherFocusApp/
+
+## Configuration
+
+To customize the app:
+
+- Update color schemes in `src/App.css`
+- Modify API endpoints in `src/App.jsx`
+- Adjust forecast days in the weather data processing function
+
+## License
+
+MIT License
