@@ -7,6 +7,8 @@
   text-align: center;
   font-family: "Poppins", Arial, sans-serif;
   display: flex;
+  justify-content: center; /* Centers the child horizontally */
+  align-items: center;
   flex-direction: column;
   transition: all 0.3s ease;
 }
@@ -30,7 +32,63 @@
   color: #ffffff;
   border: 1px solid #444;
 }
-
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+form input {
+  padding: 0.5rem;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  width: 300px;
+  margin-right: 1rem;
+  font-size: 1rem;
+}
+form button {
+  padding: 0.5rem 1rem;
+  border-radius: 12px;
+  border: none;
+  background-color: #007bff;
+  color: #ffffff;
+  font-size: 1rem;
+  cursor: pointer;
+}
+form button:hover {
+  background-color: #0056b3;
+}
+form input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+form button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5);
+}
+form input::placeholder {
+  color: #999;
+}
+form input:focus::placeholder {
+  color: #007bff;
+}
+.weather-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.weather-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 35%;
+  justify-content: center;
+  border-radius: 12px;
+  margin-top: 2rem;
+}
 /* Light Mode */
 .weather-app.light-mode {
   background: #f5f5f5;
@@ -62,12 +120,15 @@
   gap: 1.5rem;
   padding: 1.5rem;
   overflow-x: auto;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: space-between;
   scroll-snap-type: x proximity;
 }
 
 .forecast-card {
   scroll-snap-align: start;
-  min-width: 160px;
+  min-width: 170px;
   padding: 1.5rem;
   border-radius: 12px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
