@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import AppFooter from "./AppFooter";
 import "./App.css";
 
 function App() {
@@ -76,75 +77,72 @@ function App() {
   };
 
   return (
-    <div
-      className={`weather-app ${getThemeClass()} ${
-        darkMode ? "dark-mode" : "light-mode"
-      }`}
-    >
-      <h1>Weather App</h1>
-      <form onSubmit={handleSearch}>
-        <input
-          type="text"
-          value={location}
-          onChange={(e) => setLocation(e.target.value)}
-          placeholder="Enter city name"
-        />
-        <button type="submit">Search</button>
-        <button type="button" onClick={toggleDarkMode} className="theme-toggle">
-          {darkMode ? "☀️" : "🌙"}
-        </button>
-      </form>
+    <div className={`app-container ${darkMode ? "dark-mode" : ""}`}>
+      <div
+        className={`weather-app ${getThemeClass()} ${
+          darkMode ? "dark-mode" : "light-mode"
+        }`}
+      >
+        <h1>Weather App</h1>
+        <form onSubmit={handleSearch}>
+          <input
+            type="text"
+            value={location}
+            onChange={(e) => setLocation(e.target.value)}
+            placeholder="Enter city name"
+          />
+          <button type="submit">Search</button>
+          <button
+            type="button"
+            onClick={toggleDarkMode}
+            className="theme-toggle"
+          >
+            {darkMode ? "☀️" : "🌙"}
+          </button>
+        </form>
 
-      {loading && <p>Loading weather data...</p>}
-      {error && <p className="error">{error}</p>}
+        {loading && <p>Loading weather data...</p>}
+        {error && <p className="error">{error}</p>}
 
-      {weatherData && (
-        <div className="weather-container">
-          <div className="weather-display">
-            <h2>Weather in {location}</h2>
-            <p>Temperature: {weatherData.temp}°F</p>
-            <p>Feels Like: {weatherData.feelsLike}°F</p>
-            <div className="weather-condition">
-              <p>Condition: {weatherData.condition}</p>
-              <img
-                src={`https://openweathermap.org/img/wn/${weatherData.icon}@2x.png`}
-                alt={weatherData.condition}
-              />
-            </div>
-            <p>Humidity: {weatherData.humidity}%</p>
-            <p>Wind: {weatherData.wind} mph</p>
-          </div>
-
-          {forecastData && (
-            <div className="forecast-container">
-              <h3>5-Day Forecast</h3>
-              <div className="forecast-cards">
-                {forecastData.map((day, index) => (
-                  <div key={index} className="forecast-card">
-                    <p>{day.date}</p>
-                    <img
-                      src={`https://openweathermap.org/img/wn/${day.icon}.png`}
-                      alt={day.condition}
-                    />
-                    <p>{day.temp}°F</p>
-                    <p>{day.condition}</p>
-                  </div>
-                ))}
+        {weatherData && (
+          <div className="weather-container">
+            <div className="weather-display">
+              <h2>Weather in {location}</h2>
+              <p>Temperature: {weatherData.temp}°F</p>
+              <p>Feels Like: {weatherData.feelsLike}°F</p>
+              <div className="weather-condition">
+                <p>Condition: {weatherData.condition}</p>
+                <img
+                  src={`https://openweathermap.org/img/wn/${weatherData.icon}@2x.png`}
+                  alt={weatherData.condition}
+                />
               </div>
+              <p>Humidity: {weatherData.humidity}%</p>
+              <p>Wind: {weatherData.wind} mph</p>
             </div>
-          )}
-        </div>
-      )}
-      <footer className="app-footer">
-        <p>© Jim Kennedy 2025</p>
-        <a
-          href="https://jimkennedy.netlify.app/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          My Portfolio
-        </a>
-      </footer>
+
+            {forecastData && (
+              <div className="forecast-container">
+                <h3>5-Day Forecast</h3>
+                <div className="forecast-cards">
+                  {forecastData.map((day, index) => (
+                    <div key={index} className="forecast-card">
+                      <p>{day.date}</p>
+                      <img
+                        src={`https://openweathermap.org/img/wn/${day.icon}.png`}
+                        alt={day.condition}
+                      />
+                      <p>{day.temp}°F</p>
+                      <p>{day.condition}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        )}
+      </div>
+      <AppFooter darkMode={darkMode} />
     </div>
   );
 }

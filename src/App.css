@@ -1,9 +1,15 @@
 /* Base Styles */
+.app-container {
+  display: flex;
+  flex-direction: column; /* Stack children vertically */
+  min-height: 100vh; /* Ensure the layout takes up at least the full viewport height */
+  transition: all 0.3s ease;
+}
 .weather-app {
   max-width: 100%;
   padding: 1.5rem; /* Adjusted padding for smaller screens */
-  min-height: 100vh;
-  margin: 0 auto;
+  flex-grow: 1;
+  margin: 0px;
   text-align: center;
   font-family: "Poppins", Arial, sans-serif;
   display: flex;
