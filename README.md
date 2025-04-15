@@ -2,7 +2,8 @@
 
 A responsive weather application with dark/light mode and 5-day forecast.
 
-![Weather App Screenshot](public/screenshot.png)
+.light.jpg
+.dark.jpg
 
 ## Features
 
@@ -71,7 +72,7 @@ npm run build && git add dist -f && git commit -m "Adding dist folder" && git su
 ## Live Demo
 
 Access the live version at:  
-https://kennedy01-crypto.github.io/WeatherFocusApp/
+https://weather-focus-app.vercel.app/
 
 ## Configuration
 
