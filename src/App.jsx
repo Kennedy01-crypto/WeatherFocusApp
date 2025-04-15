@@ -135,6 +135,16 @@ function App() {
           )}
         </div>
       )}
+      <footer className="app-footer">
+        <p>© Jim Kennedy 2025</p>
+        <a
+          href="https://jimkennedy.netlify.app/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          My Portfolio
+        </a>
+      </footer>
     </div>
   );
 }
