@@ -1,7 +1,7 @@
 /* Base Styles */
 .weather-app {
   max-width: 100%;
-  padding: 2rem 1rem;
+  padding: 1.5rem; /* Adjusted padding for smaller screens */
   min-height: 100vh;
   margin: 0 auto;
   text-align: center;
@@ -32,47 +32,59 @@
   color: #ffffff;
   border: 1px solid #444;
 }
+
+/* Form Styles */
 form {
   display: flex;
-  justify-content: center;
+  flex-direction: column; /* Stack elements on smaller screens */
   align-items: center;
-  width: 100%;
-  margin-bottom: 2rem;
+  width: 90%; /* Take up more width on smaller screens */
+  margin-bottom: 1.5rem; /* Adjusted margin */
 }
+
 form input {
-  padding: 0.5rem;
+  padding: 0.75rem; /* Slightly larger padding for better touch targets */
   border-radius: 12px;
   border: 1px solid #ccc;
-  width: 300px;
-  margin-right: 1rem;
+  width: 100%; /* Full width on smaller screens */
+  margin-right: 0; /* Remove right margin */
+  margin-bottom: 0.75rem; /* Add bottom margin for spacing */
   font-size: 1rem;
 }
+
 form button {
-  padding: 0.5rem 1rem;
+  padding: 0.75rem 1.5rem; /* Slightly larger padding for better touch targets */
   border-radius: 12px;
   border: none;
   background-color: #007bff;
   color: #ffffff;
   font-size: 1rem;
   cursor: pointer;
+  width: 100%; /* Full width on smaller screens */
 }
+
 form button:hover {
   background-color: #0056b3;
 }
+
 form input:focus {
   outline: none;
   border-color: #007bff;
 }
+
 form button:focus {
   outline: none;
   box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5);
 }
+
 form input::placeholder {
   color: #999;
 }
+
 form input:focus::placeholder {
   color: #007bff;
 }
+
 .weather-container {
   display: flex;
   flex-direction: column;
@@ -80,15 +92,18 @@ form input:focus::placeholder {
   justify-content: center;
   width: 100%;
 }
+
 .weather-display {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 35%;
+  width: 90%; /* Take up more width on smaller screens */
   justify-content: center;
   border-radius: 12px;
-  margin-top: 2rem;
+  margin-top: 1.5rem; /* Adjusted margin */
+  padding: 1rem; /* Added padding */
 }
+
 /* Light Mode */
 .weather-app.light-mode {
   background: #f5f5f5;
@@ -111,41 +126,93 @@ form input:focus::placeholder {
 
 /* Forecast Styles */
 .forecast-container {
-  margin-top: 2rem;
+  margin-top: 1.5rem; /* Adjusted margin */
   width: 100%;
 }
 
 .forecast-cards {
   display: flex;
-  gap: 1.5rem;
-  padding: 1.5rem;
+  gap: 1rem; /* Adjusted gap */
+  padding: 1rem; /* Adjusted padding */
   overflow-x: auto;
   width: 100%;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  flex-wrap: nowrap; /* Prevent wrapping on smaller screens, enable horizontal scroll */
+  justify-content: flex-start; /* Align items to the start for horizontal scroll */
   scroll-snap-type: x proximity;
 }
 
 .forecast-card {
   scroll-snap-align: start;
-  min-width: 170px;
-  padding: 1.5rem;
+  min-width: 150px; /* Slightly smaller minimum width */
+  padding: 1rem; /* Adjusted padding */
   border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Slightly reduced shadow */
   flex: 0 0 auto;
   text-align: center;
   transition: all 0.3s ease;
+  font-size: 0.9rem; /* Slightly smaller font size */
 }
 
 /* Theme Toggle Button */
 .theme-toggle {
   cursor: pointer;
-  margin-left: 1rem;
+  /* margin-left: 1rem; */
+  margin: 12px 0px 1rem 0px;
   padding: 0.5rem;
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  width: 35px; /* Slightly smaller button */
+  height: 35px; /* Slightly smaller button */
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+/* Media Query for larger screens (laptops) */
+@media (min-width: 768px) {
+  .weather-app {
+    padding: 2rem 1rem;
+  }
+
+  form {
+    flex-direction: row; /* Put input and button in a row on larger screens */
+    width: auto; /* Adjust width based on content */
+    margin-bottom: 2rem;
+  }
+
+  form input {
+    width: 300px;
+    margin-right: 1rem;
+    margin-bottom: 0; /* Remove bottom margin */
+  }
+
+  form button {
+    width: auto; /* Adjust width based on content */
+  }
+
+  .weather-display {
+    width: 35%;
+    margin-top: 2rem;
+    padding: 1.5rem;
+  }
+
+  .forecast-cards {
+    flex-wrap: wrap; /* Allow wrapping on larger screens */
+    justify-content: space-between; /* Distribute cards evenly */
+    padding: 1.5rem;
+    overflow-x: visible; /* Show all cards */
+    scroll-snap-type: none; /* Disable scroll snapping */
+  }
+
+  .forecast-card {
+    min-width: 170px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-size: 1rem;
+  }
+
+  .theme-toggle {
+    width: 40px;
+    height: 40px;
+    margin: 0px 1rem 0px 1rem;
+  }
 }
