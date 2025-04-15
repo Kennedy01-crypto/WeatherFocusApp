@@ -2,8 +2,13 @@
 
 A responsive weather application with dark/light mode and 5-day forecast.
 
-.light.jpg
-.dark.jpg
+## Image 1
+
+![Light Mode](light.jpg)
+
+## Image 2
+
+![Dark Mode](dark.jpg)
 
 ## Features
 
