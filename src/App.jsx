@@ -83,7 +83,7 @@ function App() {
           darkMode ? "dark-mode" : "light-mode"
         }`}
       >
-        <h1>Weather App</h1>
+        <h1>Weather Focus App</h1>
         <form onSubmit={handleSearch}>
           <input
             type="text"
