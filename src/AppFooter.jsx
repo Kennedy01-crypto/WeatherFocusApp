@@ -1,13 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import "./AppFooter.css";
 
-function AppFooter({ darkMode }) {
+import { WeatherContext } from "./context/WeatherContext";
+
+function AppFooter() {
+  const { darkMode } = useContext(WeatherContext);
+
   return (
     <footer className={`app-footer ${darkMode ? "dark-mode" : "light-mode"}`}>
       <p>© Jim Kennedy 2025</p>
       <a
-        href="https://jimkennedy.netlify.app/"
+        href="https://developer-jim-kennedy.vercel.app/"
         target="_blank"
         rel="noopener noreferrer"
       >
