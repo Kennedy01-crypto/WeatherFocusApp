@@ -7,7 +7,7 @@ function AppFooter({ darkMode }) {
     <footer className={`app-footer ${darkMode ? "dark-mode" : "light-mode"}`}>
       <p>© Jim Kennedy 2025</p>
       <a
-        href="https://jimkennedy.netlify.app/"
+        href="https://developer-jim-kennedy.vercel.app/"
         target="_blank"
         rel="noopener noreferrer"
       >
