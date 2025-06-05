@@ -67,7 +67,7 @@ export const WeatherProvider = ({ children }) => {
       setLocation(locationInput);
     } catch (err) {
       // Set error message if API call fails
-      setError("Failed to fetch weather data. Please try again.");
+      setError(err.message);
       console.error(err);
     } finally {
       // Reset loading state after API call completes

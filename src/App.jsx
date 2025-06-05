@@ -1,64 +1,25 @@
-import { useState } from "react";
-import axios from "axios";
+import React, { useContext, useState } from "react";
 import AppFooter from "./AppFooter";
 import "./App.css";
+import { WeatherContext, WeatherProvider } from "./context/WeatherContext";
 
 function App() {
-  const [location, setLocation] = useState("");
-  const [darkMode, setDarkMode] = useState(false);
-  const [weatherData, setWeatherData] = useState(null);
-  const [forecastData, setForecastData] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const {
+    location,
+    darkMode,
+    weatherData,
+    forecastData,
+    loading,
+    error,
+    handleSearch,
+    toggleDarkMode,
+  } = useContext(WeatherContext);
 
-  const handleSearch = async (e) => {
+  const [inputLocation, setInputLocation] = useState("");
+
+  const onSubmit = (e) => {
     e.preventDefault();
-    if (!location.trim()) return;
-
-    setLoading(true);
-    setError(null);
-
-    try {
-      const [currentWeather, forecast] = await Promise.all([
-        axios.get(
-          `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=imperial&appid=${
-            import.meta.env.VITE_WEATHER_API_KEY
-          }`
-        ),
-        axios.get(
-          `https://api.openweathermap.org/data/2.5/forecast?q=${location}&units=imperial&appid=${
-            import.meta.env.VITE_WEATHER_API_KEY
-          }`
-        ),
-      ]);
-
-      setWeatherData({
-        temp: Math.round(currentWeather.data.main.temp),
-        condition: currentWeather.data.weather[0].main,
-        humidity: currentWeather.data.main.humidity,
-        wind: Math.round(currentWeather.data.wind.speed),
-        feelsLike: Math.round(currentWeather.data.main.feels_like),
-        icon: currentWeather.data.weather[0].icon,
-      });
-
-      // Process forecast data to get daily forecasts
-      const dailyForecasts = forecast.data.list
-        .filter((item, index) => index % 8 === 0)
-        .slice(0, 5);
-      setForecastData(
-        dailyForecasts.map((day) => ({
-          date: new Date(day.dt * 1000).toLocaleDateString(),
-          temp: Math.round(day.main.temp),
-          icon: day.weather[0].icon,
-          condition: day.weather[0].main,
-        }))
-      );
-    } catch (err) {
-      setError("Failed to fetch weather data. Please try again.");
-      console.error(err);
-    } finally {
-      setLoading(false);
-    }
+    handleSearch(inputLocation);
   };
 
   const getThemeClass = () => {
@@ -72,9 +33,9 @@ function App() {
     return "";
   };
 
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
-  };
+  if (error) {
+    return <div>{error}</div>;
+  }
 
   return (
     <div className={`app-container ${darkMode ? "dark-mode" : ""}`}>
@@ -84,11 +45,11 @@ function App() {
         }`}
       >
         <h1>Weather Focus App</h1>
-        <form onSubmit={handleSearch}>
+        <form onSubmit={onSubmit}>
           <input
             type="text"
-            value={location}
-            onChange={(e) => setLocation(e.target.value)}
+            value={inputLocation}
+            onChange={(e) => setInputLocation(e.target.value)}
             placeholder="Enter city name"
           />
           <button type="submit">Search</button>
@@ -142,9 +103,15 @@ function App() {
           </div>
         )}
       </div>
-      <AppFooter darkMode={darkMode} />
+      <AppFooter />
     </div>
   );
 }
 
-export default App;
+export default function AppWrapper() {
+  return (
+    <WeatherProvider>
+      <App />
+    </WeatherProvider>
+  );
+}
